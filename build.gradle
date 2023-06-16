@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.testng:testng:7.6.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+}
+
+test {
+    systemProperty "browser", System.getProperty("browser")
+    systemProperty "env", System.getProperty("env")
+    useTestNG()
+    maxParallelForks = 1
+}
